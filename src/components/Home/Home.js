@@ -59,7 +59,7 @@ const Home = () => {
     const [isLoading, setIsLoading] = React.useState(false);
     React.useEffect(()=>{
       setIsLoading(true);
-        fetch('http://localhost:5000/books')
+        fetch('https://safe-caverns-56430.herokuapp.com/books')
         .then(res => res.json())
         .then(data => {
           setBook(data);

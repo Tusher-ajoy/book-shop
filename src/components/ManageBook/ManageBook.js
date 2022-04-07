@@ -16,7 +16,7 @@ const ManageBook = () => {
     const navigate = useNavigate();
     const [book, setBook] = useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/books')
+        fetch('https://safe-caverns-56430.herokuapp.com/books')
         .then(res => res.json())
         .then(data => setBook(data))
     },[])
@@ -30,7 +30,7 @@ const ManageBook = () => {
     })
 
     const handleDelete = (id) =>{
-        fetch(`http://localhost:5000/delete/${id}`,{
+        fetch(`https://safe-caverns-56430.herokuapp.com/delete/${id}`,{
             method:'DELETE'
         })
         .then(res => res.json())

@@ -8,16 +8,17 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Container from '@mui/material/Container';
 import { Button } from '@mui/material';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { userContext } from '../../App';
 
 
 const Checkout = () => {
+    const navigate = useNavigate();
     const {bookId} = useParams();
     const [loggedInUser, setLoggedInUser] = useContext(userContext);
     const [book, setBook] = useState({});
     useEffect(()=>{
-        fetch(`http://localhost:5000/books/${bookId}`)
+        fetch(`https://safe-caverns-56430.herokuapp.com/books/${bookId}`)
         .then(res => res.json())
         .then(data => setBook(data))
     },[bookId])
@@ -25,7 +26,7 @@ const Checkout = () => {
     const handlePlaceOrder = () =>{
         const orderDetails = {...loggedInUser, ...book, orderTime:new Date()};
 
-        fetch('http://localhost:5000/addOrder',{
+        fetch('https://safe-caverns-56430.herokuapp.com/addOrder',{
             method:'POST',
             headers:{
                 'Content-Type':'application/json'
@@ -35,7 +36,8 @@ const Checkout = () => {
         .then(res => res.json())
         .then(data => {
             if(data){
-                alert('Your Order placed successfully')
+                alert('Your Order placed successfully');
+                navigate('/home');
             }
         })
     }

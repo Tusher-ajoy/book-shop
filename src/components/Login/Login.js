@@ -82,6 +82,7 @@ const Login = () => {
       <>
         <LoginFrom>
           <h2>{newUser ? 'Create an account' : 'Login' }</h2>
+          <small style={{color:'red'}}>Only login with google is working</small>
           <form>
            {newUser && <TextField style={inputStyle} type="text" label="Name" variant="standard" />}
             <TextField style={inputStyle} type="email" label="Username or Email" variant="standard" />

@@ -11,7 +11,7 @@ const AddBook = () => {
     const onSubmit = data => {
         const imgName = data.img[0].name;
         data.img = imgName;
-        fetch('http://localhost:5000/addBooks', {
+        fetch('https://safe-caverns-56430.herokuapp.com/addBooks', {
             method:'POST',
             headers:{
                 'Content-Type': 'application/json'
